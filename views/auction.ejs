@@ -1,0 +1,26 @@
+<h1>Auction</h1>
+
+<!-- <h1><%= user.name %></h1> -->
+<% if(auctions.length > 0){ %>
+    <% auctions.forEach(function(auction) { %>
+        <% if(auction.name != user.name){ %>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <%- include ./partials/messages %>
+                        <h5 class="card-title"><%= auction.name %></h5>
+                        <p class="card-text">₹ <%= auction.rate %></p>
+                        <p class="card-text"><%= auction.energy %> Kwhr</p>
+                        <form action="/auction" method="POST">
+                            <input type="hidden" name="sender" value="<%= auction.name %>">
+                            <input type="hidden" name="rate" value="<%= auction.rate %>">
+                            <input type="hidden" name="energy" value="<%= auction.energy %>">
+                            <input type="hidden" name="reciever" value="<%= user.name %>">
+                            <button type="submit" class="btn btn-primary">Transact</button>
+                        </form>
+                    </div>
+                </div>
+        <% } %>    
+    <% }); %>
+<% } else{ %>  
+    <p>Nothing to Auct!!!</p>
+<% } %>

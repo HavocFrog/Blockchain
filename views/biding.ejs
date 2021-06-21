@@ -1,0 +1,38 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+           Bid/Lend
+        </h1>
+        <%- include ./partials/messages %>
+        <form action="/biding" method="POST">
+          <div class="form-group">
+            <label for="name">Rate per Kwhr</label>
+            <input
+              type="text"
+              id="rate"
+              name="rate"
+              class="form-control"
+              placeholder="Fix the rate"
+              value="<%= typeof rate != 'undefined' ? rate : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="energy">Energy</label>
+            <input
+              type="text"
+              id="energy"
+              name="energy"
+              class="form-control"
+              placeholder="Enter the Energy you want to post in auction page"
+              value="<%= typeof energy != 'undefined' ? energy : '' %>"
+            />
+          </div>
+          <input type="hidden" name="name" value="<%= user.name %>">
+          <button type="submit" class="btn btn-primary btn-block">
+            Bid/Lend (Will be posted in Auction page)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
